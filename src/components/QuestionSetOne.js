@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import UserForm from "./UserForm";
-import QuestionSetTwo from "./QuestionSetTwo";
-import FormUserDetails from "./FormUserDetails";
-import Result from "./Result";
 import FormHelperText from '@mui/material/FormHelperText';
 
 function QuestionSetOne({ formData, setFormData }) {

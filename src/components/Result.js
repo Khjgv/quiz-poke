@@ -1,20 +1,35 @@
 import React, { useState } from "react";
-import QuestionSetOne from "./QuestionSetOne";
-import QuestionSetTwo from "./QuestionSetTwo";
-import FormUserDetails from "./FormUserDetails";
-import Home from "./Home";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Result() {
+  const [open, setOpen] = React.useState(true);
+
   return (
-    <div>Result</div>
-  )
+    <div>
+      <Collapse in={open}>
+        <Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          Success
+        </Alert>
+      </Collapse>
+    </div>
+  );
 }
 
-export default Result
+export default Result;

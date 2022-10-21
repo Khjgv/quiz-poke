@@ -5,9 +5,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import UserForm from "./UserForm";
-import FormUserDetails from "./FormUserDetails";
-import Result from "./Result";
 import FormHelperText from '@mui/material/FormHelperText';
 
 
@@ -17,88 +14,75 @@ function QuestionSetTwo({ formData, setFormData }) {
       <Box sx={{ flexGrow: 1, t: 10, width: 300, height: 10 }}></Box>
       <Box sx={{ flexGrow: 1, t: 10 }}>
         <FormControl sx={{ m: 1, minWidth: 190 }}>
-          <InputLabel id="demo-simple-select-label">Colour</InputLabel>
+          <InputLabel id="demo-simple-select-label">Activity</InputLabel>
           <Select
-            value={formData.favColour}
-            label="Colour"
+            value={formData.favActivity}
+            label="Activity"
             onChange={(event) =>
-              setFormData({ ...formData, favColour: event.target.value })
+              setFormData({ ...formData, favActivity: event.target.value })
             }
           >
-            <MenuItem value={"red"}>Red</MenuItem>
-            <MenuItem value={"orange"}>Orange</MenuItem>
-            <MenuItem value={"yellow"}>Yellow</MenuItem>
-            <MenuItem value={"green"}>Green</MenuItem>
-            <MenuItem value={"blue"}>Blue</MenuItem>
-            <MenuItem value={"purple"}>Purple</MenuItem>
-            <MenuItem value={"black"}>Black</MenuItem>
-            <MenuItem value={"white"}>White</MenuItem>
-            <MenuItem value={"gray"}>Gray</MenuItem>
+            <MenuItem value={"read"}>Reading</MenuItem>
+            <MenuItem value={"cook"}>Cooking</MenuItem>
+            <MenuItem value={"train"}>Training</MenuItem>
+            <MenuItem value={"learn"}>Learning</MenuItem>
+            <MenuItem value={"sleep"}>Sleeping</MenuItem>
+            <MenuItem value={"eat"}>Eating</MenuItem>
+            <MenuItem value={"play"}>Playing</MenuItem>
+            <MenuItem value={"talk"}>Talking</MenuItem>
           </Select>
-          <FormHelperText>Favourite Colour?</FormHelperText>
+          <FormHelperText>Favourite Activity?</FormHelperText>
         </FormControl>
         <br />
         <FormControl sx={{ m: 1, minWidth: 190 }}>
-          <InputLabel id="demo-simple-select-label">Season</InputLabel>
+          <InputLabel id="demo-simple-select-label">Food</InputLabel>
           <Select
-            value={formData.favSeason}
-            label="Season"
+            value={formData.favFood}
+            label="Food"
             onChange={(event) =>
-              setFormData({ ...formData, favSeason: event.target.value })
+              setFormData({ ...formData, favFood: event.target.value })
             }
           >
-            <MenuItem value={"spring"}>Spring</MenuItem>
-            <MenuItem value={"summer"}>Summer</MenuItem>
-            <MenuItem value={"winter"}>Winter</MenuItem>
-            <MenuItem value={"fall"}>Fall</MenuItem>
+            <MenuItem value={"meat"}>Meat</MenuItem>
+            <MenuItem value={"dairy"}>Dairy</MenuItem>
+            <MenuItem value={"vegetable"}>Vegetables</MenuItem>
+            <MenuItem value={"fruit"}>Fruits</MenuItem>
+            <MenuItem value={"grain"}>Grains</MenuItem>
+            <MenuItem value={"desert"}>Desert</MenuItem>
+            <MenuItem value={"drinks"}>Drinks</MenuItem>
           </Select>
-          <FormHelperText>Favourite Season?</FormHelperText>
+          <FormHelperText>Favourite Food?</FormHelperText>
         </FormControl>
         <br />
         <FormControl sx={{ m: 1, minWidth: 190 }}>
-          <InputLabel id="demo-simple-select-label">Weather</InputLabel>
+          <InputLabel id="demo-simple-select-label">Transport</InputLabel>
           <Select
-            value={formData.favWeather}
-            label="Weather"
+            value={formData.favTransport}
+            label="Transport"
             onChange={(event) =>
-              setFormData({ ...formData, favWeather: event.target.value })
+              setFormData({ ...formData, favTransport: event.target.value })
             }
           >
-            <MenuItem value={"rain"}>Rainy</MenuItem>
-            <MenuItem value={"sun"}>Sunny</MenuItem>
-            <MenuItem value={"hail"}>Hail</MenuItem>
-            <MenuItem value={"snow"}>Snowy</MenuItem>
-            <MenuItem value={"ice"}>Ice Rain</MenuItem>
-            <MenuItem value={"cloud"}>Cloudy</MenuItem>
-            <MenuItem value={"wind"}>Windy</MenuItem>
-            <MenuItem value={"clear"}>Clear</MenuItem>
+            <MenuItem value={"bike"}>Bike</MenuItem>
+            <MenuItem value={"walk"}>Walk</MenuItem>
+            <MenuItem value={"jog"}>Jog</MenuItem>
+            <MenuItem value={"car"}>Car</MenuItem>
+            <MenuItem value={"train"}>Train</MenuItem>
+            <MenuItem value={"plane"}>Plane</MenuItem>
+            <MenuItem value={"ship"}>Ship</MenuItem>
           </Select>
-          <FormHelperText>Favourite Weather?</FormHelperText>
+          <FormHelperText>Favourite Transport Mode?</FormHelperText>
         </FormControl>
         <br />
-        <FormControl sx={{ m: 1, minWidth: 190 }}>
-          <InputLabel id="demo-simple-select-label">Sport</InputLabel>
-          <Select
-            value={formData.favSport}
-            label="Sport"
-            onChange={(event) =>
-              setFormData({ ...formData, favSport: event.target.value })
-            }
-          >
-            <MenuItem value={"basketball"}>Basketball</MenuItem>
-            <MenuItem value={"soccer"}>Soccer</MenuItem>
-            <MenuItem value={"football"}>Football</MenuItem>
-            <MenuItem value={"volleyball"}>Volleyball</MenuItem>
-            <MenuItem value={"hockey"}>Hockey</MenuItem>
-            <MenuItem value={"badminton"}>Badminton</MenuItem>
-            <MenuItem value={"pingpong"}>Ping Pong</MenuItem>
-            <MenuItem value={"tennis"}>Tennis</MenuItem>
-            <MenuItem value={"track"}>Track and Field</MenuItem>
-            <MenuItem value={"lift"}>Power Lifting</MenuItem>
-            <MenuItem value={"swim"}>Swimming</MenuItem>
-          </Select>
-          <FormHelperText>Favourite Sport?</FormHelperText>
-        </FormControl>
+        <TextField
+          margin="normal"
+          label="Sleep Duration (hr)"
+          variant="filled"
+          value={formData.sleepTime}
+          onChange={(event) =>
+            setFormData({ ...formData, sleepTime: event.target.value })
+          }
+        />
         <br />
       </Box>
     </div>

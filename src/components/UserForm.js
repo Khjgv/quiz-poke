@@ -10,8 +10,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import SvgIcon from '@mui/material/SvgIcon';
+import SvgIcon from "@mui/material/SvgIcon";
+
 
 function HomeIcon(props) {
   return (
@@ -24,7 +24,7 @@ function HomeIcon(props) {
 function UserForm() {
   const [page, setPage] = useState(0);
 
-  const [formData, setFormData] = useState ({
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -33,11 +33,11 @@ function UserForm() {
     favColour: "",
     favSeason: "",
     favWeather: "",
-    favSport: "", 
+    favSport: "",
     favActivity: "",
     favFood: "",
     favTransport: "",
-    sleepTime: ""
+    sleepTime: 0,
   });
 
   const FormTitles = [
@@ -52,13 +52,13 @@ function UserForm() {
     if (page == 0) {
       return <Home />;
     } else if (page == 1) {
-      return <FormUserDetails formData={formData} setFormData={setFormData}/>;
+      return <FormUserDetails formData={formData} setFormData={setFormData} />;
     } else if (page == 2) {
-      return <QuestionSetOne formData={formData} setFormData={setFormData}/>;
+      return <QuestionSetOne formData={formData} setFormData={setFormData} />;
     } else if (page == 3) {
-      return <QuestionSetTwo formData={formData} setFormData={setFormData}/>;
+      return <QuestionSetTwo formData={formData} setFormData={setFormData} />;
     } else if (page == 4) {
-      return <Result />;
+      return <Result formData={formData} setFormData={setFormData} />;
     }
   };
 
@@ -92,10 +92,11 @@ function UserForm() {
       <div className="footer">
         <Box sx={{ "& button": { m: 1 } }}>
           <Button
-            disabled={page == 0}
+            disabled={page == 0 || page == FormTitles.length - 1}
             type="button"
             variant="contained"
             onClick={() => {
+              console.log(formData);  
               setPage((currPage) => currPage - 1);
             }}
           >
@@ -109,10 +110,9 @@ function UserForm() {
               setPage((currPage) => currPage + 1);
             }}
           >
-            Next
+            {page === FormTitles.length - 2 ? "Submit" : "Next"}
           </Button>
         </Box>
-        
       </div>
     </div>
   );
