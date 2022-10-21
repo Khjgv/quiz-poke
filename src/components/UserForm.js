@@ -24,9 +24,15 @@ function HomeIcon(props) {
 function UserForm() {
   const [page, setPage] = useState(0);
 
+  var pokemonName = "";
+
   var numID = "";
+  var numPokemon = "";
+  var IDVal = "";
 
   var pokemonType = "";
+
+  var listAll = {};
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -42,6 +48,13 @@ function UserForm() {
     favFood: "",
     favTransport: "",
     sleepTime: 0,
+  });
+
+  const [pokemon, setPokemon] = useState({
+    name: "",
+    species: "",
+    img: "",
+    type: "",
   });
 
   const FormTitles = [
@@ -62,13 +75,13 @@ function UserForm() {
     } else if (page == 3) {
       return <QuestionSetTwo formData={formData} setFormData={setFormData} />;
     } else if (page == 4) {
-      return <Result formData={formData} setFormData={setFormData} />;
+      return <Result pokemon={pokemon} setPokemon={setPokemon} />;
     }
   };
 
   function generateNum() {
     // var input = formData.height + formData.sleepTime;
-    numID = Math.floor(Math.random() * numID);
+    numID = Math.floor(Math.random() * numPokemon);
   }
 
   function findType() {
@@ -151,6 +164,29 @@ function UserForm() {
     Axios.get(`https://pokeapi.co/api/v2/type/${pokemonType}`).then(
       (response) => {
         console.log(response);
+        listAll = response.data.pokemon;
+        numPokemon = listAll.length;
+        generateNum();
+        console.log(numID);
+        IDVal = numID.toString();
+        console.log(IDVal);
+        pokemonName = response.data.pokemon[numID].pokemon.name;
+        console.log(pokemonName);
+        searchPokemon();
+      }
+    );
+  };
+
+  const searchPokemon = () => {
+    Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
+      (response) => {
+        console.log(response);
+        setPokemon({
+          name: pokemonName,
+          species: response.data.species.name,
+          img: response.data.sprites.front_default,
+          type: response.data.types[0].type.name,
+        });
       }
     );
   };
