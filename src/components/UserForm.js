@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import SvgIcon from "@mui/material/SvgIcon";
-
+import Axios from "axios";
 
 function HomeIcon(props) {
   return (
@@ -23,6 +23,10 @@ function HomeIcon(props) {
 
 function UserForm() {
   const [page, setPage] = useState(0);
+
+  var numID = "";
+
+  var pokemonType = "";
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -62,6 +66,95 @@ function UserForm() {
     }
   };
 
+  function generateNum() {
+    // var input = formData.height + formData.sleepTime;
+    numID = Math.floor(Math.random() * numID);
+  }
+
+  function findType() {
+    if (formData.favColour == "red") {
+      if (formData.favTransport == "ship" || formData.favTransport == "plane") {
+        pokemonType = "psychic";
+      } else if (
+        formData.favTransport == "car" ||
+        formData.favTransport == "train"
+      ) {
+        pokemonType = "fire";
+      } else {
+        pokemonType = "fairy";
+      }
+    } else if (formData.favColour == "orange") {
+      if (formData.favTransport == "ship" || formData.favTransport == "plane") {
+        pokemonType = "fighting";
+      } else if (
+        formData.favTransport == "car" ||
+        formData.favTransport == "train"
+      ) {
+        pokemonType = "ground";
+      } else {
+        pokemonType = "rock";
+      }
+    } else if (formData.favColour == "yellow") {
+      pokemonType = "electric";
+    } else if (formData.favColour == "green") {
+      if (
+        formData.favTransport == "ship" ||
+        formData.favTransport == "plane" ||
+        formData.favTransport == "train" ||
+        formData.favTransport == "car"
+      ) {
+        pokemonType = "bug";
+      } else {
+        pokemonType = "grass";
+      }
+    } else if (formData.favColour == "blue") {
+      if (
+        formData.favTransport == "ship" ||
+        formData.favTransport == "plane" ||
+        formData.favTransport == "train" ||
+        formData.favTransport == "car"
+      ) {
+        pokemonType = "ice";
+      } else {
+        pokemonType = "water";
+      }
+    } else if (formData.favColour == "purple") {
+      if (formData.favTransport == "ship" || formData.favTransport == "plane") {
+        pokemonType = "dragon";
+      } else if (
+        formData.favTransport == "car" ||
+        formData.favTransport == "train"
+      ) {
+        pokemonType = "poison";
+      } else {
+        pokemonType = "ghost";
+      }
+    } else if (formData.favColour == "black") {
+      pokemonType = "dark";
+    } else if (formData.favColour == "white") {
+      pokemonType = "normal";
+    } else if (formData.favColour == "gray") {
+      if (
+        formData.favTransport == "ship" ||
+        formData.favTransport == "plane" ||
+        formData.favTransport == "train" ||
+        formData.favTransport == "car"
+      ) {
+        pokemonType = "flying";
+      } else {
+        pokemonType = "steel";
+      }
+    }
+  }
+
+  const searchType = () => {
+    Axios.get(`https://pokeapi.co/api/v2/type/${pokemonType}`).then(
+      (response) => {
+        console.log(response);
+      }
+    );
+  };
+
   return (
     <div className="form">
       <div className="appBar">
@@ -83,7 +176,6 @@ function UserForm() {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {FormTitles[page]}
               </Typography>
-              <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -96,7 +188,6 @@ function UserForm() {
             type="button"
             variant="contained"
             onClick={() => {
-              console.log(formData);  
               setPage((currPage) => currPage - 1);
             }}
           >
@@ -107,7 +198,14 @@ function UserForm() {
             type="button"
             variant="contained"
             onClick={() => {
-              setPage((currPage) => currPage + 1);
+              if (page === FormTitles.length - 2) {
+                console.log(formData);
+                findType();
+                searchType();
+                setPage((currPage) => currPage + 1);
+              } else {
+                setPage((currPage) => currPage + 1);
+              }
             }}
           >
             {page === FormTitles.length - 2 ? "Submit" : "Next"}

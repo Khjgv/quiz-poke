@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import QuestionSetOne from "./QuestionSetOne";
-import QuestionSetTwo from "./QuestionSetTwo";
-import FormUserDetails from "./FormUserDetails";
-import Result from "./Result";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -20,7 +16,7 @@ function Home() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            Welcome to Quiz-Pokemon! This web-app lets you to find your destined
+            Welcome to Quiz-Pokémon! This web-app lets you to find your destined
             Pokemon by answering some questions about yourself~!
           </Typography>
         </Box>
