@@ -9,7 +9,6 @@ function Result({ pokemon, setPokemon }) {
 
   return (
     <div>
-      
       <Collapse in={open}>
         <Alert
           action={

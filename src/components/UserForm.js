@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import SvgIcon from "@mui/material/SvgIcon";
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Axios from "axios";
 
 function HomeIcon(props) {
@@ -212,6 +213,7 @@ function UserForm() {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {FormTitles[page]}
               </Typography>
+              <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
         </Box>
